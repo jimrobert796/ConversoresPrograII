@@ -29,13 +29,25 @@ public class MainActivity extends AppCompatActivity {
     // Matriz dimensional conteniendo las conversiones base
     Double valores[][] = {
             {1.0, 0.85, 7.67, 26.42, 36.80, 495.77, 3.35, 1.00, 17.16, 1.36}, //moendas
-            {}, // Masa
+            {
+                    1.0,           // Kilogramo (kg) - unidad base
+                    1000.0,        // Gramo (g)
+                    1000000.0,     // Miligramo (mg)
+                    100.0,         // Decagramo (dag)
+                    10.0,          // Hectogramo (hg)
+                    5000.0,        // Quilate (ct) - 1 kg = 5000 ct
+                    35.274,        // Onza (oz)
+                    2.20462,       // Libra (lb)
+                    0.157473,      // Stone (st)
+                    0.001          // Tonelada (t)
+            }, // Masa
             {}, //volumen
             {1.0, 1000.0, 100.0, 39.3701, 3.280841666667, 1.09361, 0.001,0.000621371}, //longitud arreglado
             {}, //Almacenamiento
             {}, // Tiempo
             {1.0, 0.001, 0.000125, 0.000976563, 1e-6, 1.25e-7,  9.5367e-7, 1e-9, 1.25e-10, 9.3132e-10, 1e-12, 1.25e-13, 9.0949e-13} // Transferencia de datos
     };
+
 
 
     /* Monedas
