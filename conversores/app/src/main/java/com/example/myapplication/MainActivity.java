@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.widget.Toast; // Importacion de Toast para notificaciones
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
             {1.0, 0.85, 7.67, 26.42, 36.80, 495.77, 3.35, 1.00, 17.16, 1.36}, //moendas
             {}, // Masa
             {}, //volumen
-            {1.0, 1000.0, 100.0, 39.3701, 3.280841666667, 1.1963081929167, 1.09361, 0.001,0.000621371}, //longitud
+            {1.0, 1000.0, 100.0, 39.3701, 3.280841666667, 1.09361, 0.001,0.000621371}, //longitud arreglado
             {}, //Almacenamiento
             {}, // Tiempo
-            {}, // Transferencia de datos
+            {1.0, 0.001, 0.000125, 0.000976563, 1e-6, 1.25e-7,  9.5367e-7, 1e-9, 1.25e-10, 9.3132e-10, 1e-12, 1.25e-13, 9.0949e-13} // Transferencia de datos
     };
 
 
@@ -117,15 +119,18 @@ public class MainActivity extends AppCompatActivity {
 
     /* Transferencia de Datos
      * Bit por segundo (bps) - unidad base
-     * Kilobit por segundo (Kbps)
-     * Megabit por segundo (Mbps)
-     * Gigabit por segundo (Gbps)
-     * Terabit por segundo (Tbps)
-     * Petabit por segundo (Pbps)
-     * Exabit por segundo (Ebps)
-     * Zettabit por segundo (Zbps)
-     * Yottabit por segundo (Ybps)
-     * Byte por segundo (Bps)
+       "Kilobit por segundo",
+       "Kilobyte por segundo",
+       "Kibibit por segundo",
+       "Megabit por segundo",
+       "Megabyte por segundo",
+       "Mebibit por segundo",
+       "Gigabit por segundo",
+       "Gigabyte por segundo",
+       "Gibibit por segundo",
+       "Terabit por segundo",
+       "Terabyte por segundo",
+       "Tebibit por segundo"
      */
 
 
@@ -166,8 +171,8 @@ public class MainActivity extends AppCompatActivity {
                     "Pinta (pt)", "Cuarto (qt)",
                     "Barril (bbl)"}, // volumen,
 
-            {"Metro (m)", "Centímetro (cm)"
-                    , "Milímetro (mm)",
+            {"Metro (m)", "Milímetro (mm)",
+                    "Centímetro (cm)",
                     "Pulgada (in)",
                     "Pie (ft)",
                     "Yarda (yd)",
@@ -197,14 +202,18 @@ public class MainActivity extends AppCompatActivity {
 
             {"Bit por segundo (bps)",
                     "Kilobit por segundo (Kbps)",
+                    "Kilobyte por segundo (KBps)",
+                    "Kibibit por segundo (Kibps)",
                     "Megabit por segundo (Mbps)",
+                    "Megabyte por segundo (MBps)",
+                    "Mebibit por segundo (Mibps)",
                     "Gigabit por segundo (Gbps)",
+                    "Gigabyte por segundo (GBps)",
+                    "Gibibit por segundo (Gibps)",
                     "Terabit por segundo (Tbps)",
-                    "Petabit por segundo (Pbps)",
-                    "Exabit por segundo (Ebps)",
-                    "Zettabit por segundo (Zbps)",
-                    "Yottabit por segundo (Ybps)",
-                    "Byte por segundo (Bps)"} // transferencia de datos
+                    "Terabyte por segundo (TBps)",
+                    "Tebibit por segundo (Tibps)"
+            }// transferencia de datos
 
     };
 
@@ -255,24 +264,41 @@ public class MainActivity extends AppCompatActivity {
         spn = findViewById(R.id.spnTipo);
         int tipo = spn.getSelectedItemPosition();
 
-        // Pociscion selecionada de 0 a 5  del primer spinner
+        // Pociscion selecionada de 0 a 5  del segundo spinner
         spn = findViewById(R.id.spnDe);
         int de = spn.getSelectedItemPosition();
 
-        // Pociscion selecionada de 0 a 5 del segundo spinner
+        // Pociscion selecionada de 0 a 5 del tercer spinner
         spn = findViewById(R.id.spnA);
         int a = spn.getSelectedItemPosition();
 
         // Obtenemos el valor dado en el input/textbox
         tempVal = findViewById(R.id.txtCantidad);
-        double cantidad = Double.parseDouble(tempVal.getText().toString());
 
-        // Variable que almacena el calculo de la funcion
-        double respuesta = conversor(tipo, de, a, cantidad);
+        // ==== Intentamos la conversion ====
+        try {
+            double cantidad = Double.parseDouble(tempVal.getText().toString());
 
-        // Mostrar el resultado en el label
-        tempVal = findViewById(R.id.lblRespuesta);
-        tempVal.setText("Respuesta: "+ respuesta);
+            // Variable que almacena el calculo de la funcion
+            double respuesta = conversor(tipo, de, a, cantidad);
+
+            // Mostrar el resultado en el label
+            tempVal = findViewById(R.id.lblRespuesta);
+            tempVal.setText("Respuesta: "+ respuesta);
+
+            // Toast sirve para notificaciones rapidas
+            Toast.makeText(this, "Conversion exitosa", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) { // ==== Manejo de error ====
+
+            // Toast sirve para notificaciones rapidas
+            Toast.makeText(this, "Ingrese un número válido", Toast.LENGTH_SHORT).show();
+            return; // IMPORTANTE: detener el metodo
+        }
+
+
+
+
     }
 
 
