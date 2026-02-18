@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spn;
     // Matriz dimensional conteniendo las conversiones base
     Double valores[][] = {
-            {1.0, 0.85, 7.67, 26.42, 36.80, 495.77, 3.35, 1.00, 17.16, 1.36}, //moendas
+            {1.0, 0.85, 7.67, 26.53, 36.71, 481.72, 3.35, 1.00, 17.22, 1.37}, //moendas Actualizado 18/2/2026
             {
                     1.0,           // Kilogramo (kg) - unidad base
                     1000.0,        // Gramo (g)
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     0.157473,      // Stone (st)
                     0.001          // Tonelada (t)
             }, // Masa
-            {}, //volumen
+            {1.0, 1000.0, 0.001, 1000.0, 0.264172, 0.219969, 33.814, 2.1138, 1.05669, 0.00628981}, //volumen
             {1.0, 1000.0, 100.0, 39.3701, 3.280841666667, 1.09361, 0.001,0.000621371}, //longitud arreglado
             {
                     1.0,           // Bit (b)
