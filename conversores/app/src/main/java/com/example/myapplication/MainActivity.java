@@ -43,7 +43,18 @@ public class MainActivity extends AppCompatActivity {
             }, // Masa
             {}, //volumen
             {1.0, 1000.0, 100.0, 39.3701, 3.280841666667, 1.09361, 0.001,0.000621371}, //longitud arreglado
-            {}, //Almacenamiento
+            {
+                    1.0,           // Bit (b)
+                    0.125,         // Byte (B)
+                    0.000125,      // Kilobyte (KB)
+                    1.25e-7,       // Megabyte (MB)
+                    1.25e-10,      // Gigabyte (GB)
+                    1.25e-13,      // Terabyte (TB)
+                    1.25e-16,      // Petabyte (PB)
+                    1.25e-19,      // Exabyte (EB)
+                    1.25e-22,      // Zettabyte (ZB)
+                    1.25e-25       // Yottabyte (YB)
+            }, // Almacenamiento
             {}, // Tiempo
             {1.0, 0.001, 0.000125, 0.000976563, 1e-6, 1.25e-7,  9.5367e-7, 1e-9, 1.25e-10, 9.3132e-10, 1e-12, 1.25e-13, 9.0949e-13} // Transferencia de datos
     };
