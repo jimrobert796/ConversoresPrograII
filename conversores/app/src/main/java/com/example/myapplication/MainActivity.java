@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     1.25e-22,      // Zettabyte (ZB)
                     1.25e-25       // Yottabyte (YB)
             }, // Almacenamiento
-            {}, // Tiempo
+            {1.0,12.0,52.1429,365.0,8760.0,525600.0,3.154e+7,3.154e+10,3.154e+13,3.154e+16}, // Tiempo
             {1.0, 0.001, 0.000125, 0.000976563, 1e-6, 1.25e-7,  9.5367e-7, 1e-9, 1.25e-10, 9.3132e-10, 1e-12, 1.25e-13, 9.0949e-13} // Transferencia de datos
     };
 
@@ -300,17 +300,21 @@ public class MainActivity extends AppCompatActivity {
 
         // ==== Intentamos la conversion ====
         try {
+            // Obtenemos el texto del ultimo spinner
+            String textoConvertido = spn.getSelectedItem().toString();
+
             double cantidad = Double.parseDouble(tempVal.getText().toString());
 
             // Variable que almacena el calculo de la funcion
             double respuesta = conversor(tipo, de, a, cantidad);
 
+
             // Mostrar el resultado en el label
             tempVal = findViewById(R.id.lblRespuesta);
-            tempVal.setText("Respuesta: "+ respuesta);
+            tempVal.setText(String.format("Respuesta: %.2f %s", respuesta, textoConvertido)); //String.format -> sirve para darle formato a los numeros en este caso 12.92 el formato
 
             // Toast sirve para notificaciones rapidas
-            Toast.makeText(this, "Conversion exitosa", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Conversion exitosa a " + textoConvertido, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) { // ==== Manejo de error ====
 
